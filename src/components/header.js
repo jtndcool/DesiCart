@@ -1,28 +1,36 @@
 import React, { Component } from 'react';
 import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ImageBackground } from 'react-native';
+
 export default class HeaderTab extends Component {
+    
   render() {
     return (
 
-        <Header>
+   
+          <Header style={styles.headerStyle} androidStatusBarColor="black" >
 
-          <Body>
-            <Title>DesiCart</Title>
-          </Body>
-          <Right>
-            <Button transparent>
-              <Icon name='cart' />
-            </Button>
-          </Right>
-        </Header>
+<Body>
+  <Title style={{ color:'black'}}>DesiCart</Title>
+</Body>
+<Right>
+  <Button transparent>
+    <Icon style={{ color:'black'}} name='cart' />
+  </Button>
+</Right>
+</Header>
+      
+      
   
     );
   }
 }
 
 styles = StyleSheet.create({
-    title:{
-    
+    headerStyle:{
+        
+            backgroundColor: '#f8f8ff',
+
+          
     }
 })

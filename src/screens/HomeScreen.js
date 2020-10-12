@@ -1,57 +1,79 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import HeaderTab from '../components/header';
-import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
+import { Container, Header, Left, Body, Right, Button, Icon, Title,Content, Card, CardItem } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Dimensions, Image, ScrollView } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
 
    return(
     <Container>
     <HeaderTab/>
- 
-    <Grid>
+
+    <Card transparent>
+            <CardItem>
+              <Body>
+
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <MaterialCommunityIcons name="hand-pointing-left" color={'black'} size={25} />
+              <Text style={{fontSize:20, marginLeft:5}}>Swipe left to see Categories</Text>
+            </View>
+             
+              </Body>
+            </CardItem>
+          </Card>
+  
+  <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+ <Grid>
        
-       <Col style={styles.gridStyle}>
+       <Col style={styles.gridStyle} onPress={()=>navigation.navigate('Restaurants')}>
        <Image style={styles.image} source = {require('../../assets/restaurant.png')} />
-       <Text style={{fontSize:20}}>Restaurants</Text>
+       <Text >Restaurants</Text>
        </Col>
 
        <Col style={styles.gridStyle}>
        <Image style={styles.image} source = {require('../../assets/grocery.png')} />
-       <Text style={{fontSize:20}}>Grocery</Text>
+       <Text >Grocery</Text>
        </Col>
-
-       <Col style={styles.gridStyle}>
-       <Image style={styles.image} source = {require('../../assets/grocery.png')} />
-       <Text style={{fontSize:20}}>Milk Service</Text>
-       </Col>
-
-       <Col style={styles.gridStyle}>
-       <Image style={styles.image} source = {require('../../assets/grocery.png')} />
-       <Text style={{fontSize:20}}>Vegies</Text>
-       </Col>
-
-   
-     </Grid>
-
-     <Grid>
-    
 
        <Col style={styles.gridStyle}>
        <Image style={styles.image} source = {require('../../assets/milk.png')} />
-       <Text style={{fontSize:20}}>Milk Service</Text>
+       <Text>Milk Service</Text>
        </Col>
 
        <Col style={styles.gridStyle}>
        <Image style={styles.image} source = {require('../../assets/vege.png')} />
-       <Text style={{fontSize:20}}>Vegies</Text>
+       <Text >Vegies</Text>
        </Col>
 
    
      </Grid>
+  </ScrollView>
+
+<ScrollView>
+
+<Grid>
+     <Row >
+       <Image source = {{uri:'https://static.toiimg.com/photo/57888302.cms'}} style={{width: 400, height: 200}}/>
+       </Row>
+       <Row >
+       <Image source = {{uri:'https://static.toiimg.com/photo/imgsize-86204,msid-67785906/67785906.jpg'}} style={{width: 400, height: 200}}/>
+       </Row>
+       <Row>
+       <Image source = {{uri:'https://d168jcr2cillca.cloudfront.net/uploadimages/sales_offer_mainpic_20100909174909VilasVenue_Banner.png'}} style={{width: 400, height: 200}}/>
+       </Row>
+
+      </Grid>
+    
+
+</ScrollView>
+
+       
    
    
     </Container>
@@ -61,18 +83,19 @@ export default function HomeScreen() {
 styles = StyleSheet.create({
     gridStyle: {
 
-        backgroundColor: '#d3d3d3', width:Dimensions.get('window').width/2, height:Dimensions.get('window').height/4 ,  flexDirection: 'column',
+        backgroundColor: 'white', width:Dimensions.get('window').width/4, height:Dimensions.get('window').height/8 ,  flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         borderColor:'grey',
         borderRadius:10,
         borderWidth:2,
         marginTop:20,
-        marginBottom:-20
+        marginBottom:20,
+        marginHorizontal:2
      },
      image:{
-         width:Dimensions.get('window').height/8,
-         height:Dimensions.get('window').height/8,
+         width:Dimensions.get('window').height/16,
+         height:Dimensions.get('window').height/16,
          flexDirection: 'column',
          justifyContent: 'flex-end',
          alignItems: 'center'

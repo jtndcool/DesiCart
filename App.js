@@ -8,6 +8,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ProfileScreen from './src/screens/ProfileScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { createStackNavigator } from '@react-navigation/stack';
+import { MainStackNavigator } from "./src/navigations/StackNavigation";
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -15,6 +18,7 @@ export default function App() {
 
   
   <NavigationContainer styles={styles.container}>
+    
     <MyTabs />
   </NavigationContainer>
     
@@ -55,7 +59,7 @@ function MyTabs() {
       ),
     }} />
    <Tab.Screen 
-   name="Ordero"
+   name="Order"
    
     component={OrderScreen}
     options={{
@@ -84,6 +88,7 @@ function MyTabs() {
    </Tab.Navigator>
   )
 }
+
 
 
 const styles = StyleSheet.create({
