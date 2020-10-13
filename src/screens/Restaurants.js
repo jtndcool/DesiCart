@@ -1,12 +1,28 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
+import { Container, Header, Left, Body, Right, Button, Icon, Title , Subtitle} from 'native-base';
+import  { Component } from 'react';
+import Posts from '../components/restauarntCards';
 
-export default function Restaurants() {
+
+export default function Restaurants({navigation}) {
 
    return(
-    <Container>
-    <Text style={styles.myState}>Hello world this is order screen</Text>
+      <Container>
+      <Header>
+      <Left>
+            <Button transparent onPress={()=> navigation.navigate("Home")}>
+              <Icon name='arrow-back' />
+            </Button>
+          </Left>
+        <Body>
+          <Title>Restaurants</Title>
+          <Subtitle>Please Select </Subtitle>
+        </Body>
+        <Right />
+      </Header>
+
+      <Posts style={styles.myState}/>
     </Container>
    )
    
@@ -20,3 +36,6 @@ styles = StyleSheet.create({
         fontSize: 20
      }
 })
+
+
+
