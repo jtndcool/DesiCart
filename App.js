@@ -11,20 +11,40 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { createStackNavigator } from '@react-navigation/stack';
 import { MainStackNavigator } from "./src/navigations/StackNavigation";
 import { MyTabs } from './src/navigations/TabNavigation';
+import * as Font from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
 
+export default class App extends React.Component {
 
-export default function App() {
-  return (
+  constructor(props) {
+    super(props);
+    this.state = {
+      isReady: false,
+    };
+  }
+  async componentDidMount() {
+    await Font.loadAsync({
+      Roboto: require('native-base/Fonts/Roboto.ttf'),
+      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+      ...Ionicons.font,
+    });
+    this.setState({ isReady: true });
+  }
 
+  render() {
+    return (
+
+      <NavigationContainer  styles={styles.container}>
+      <MyTabs />
+      </NavigationContainer>
   
-  <NavigationContainer  styles={styles.container}>
-     <MyTabs />
-  </NavigationContainer>
-  );
+    )
+  }
+ 
 }
 
 
-const styles = StyleSheet.create({
+ styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',

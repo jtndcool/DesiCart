@@ -7,77 +7,95 @@ import { Dimensions, Image, ScrollView } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Ionicons } from '@expo/vector-icons';
 
 
-export default function HomeScreen({ navigation }) {
+export default class HomeScreen extends React.Component {
 
-   return(
-    <Container>
-    <HeaderTab/>
-
-    <Card transparent>
-            <CardItem>
-              <Body>
-
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              <MaterialCommunityIcons name="hand-pointing-left" color={'black'} size={25} />
-              <Text style={{fontSize:20, marginLeft:5}}>Swipe left to see Categories</Text>
-            </View>
-             
-              </Body>
-            </CardItem>
-          </Card>
   
-  <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
- <Grid>
-       
-       <Col style={styles.gridStyle} onPress={()=>navigation.navigate('Restaurants')}>
-       <Image style={styles.image} source = {require('../../assets/restaurant.png')} />
-       <Text >Restaurants</Text>
-       </Col>
 
-       <Col style={styles.gridStyle}>
-       <Image style={styles.image} source = {require('../../assets/grocery.png')} />
-       <Text >Grocery</Text>
-       </Col>
 
-       <Col style={styles.gridStyle}>
-       <Image style={styles.image} source = {require('../../assets/milk.png')} />
-       <Text>Milk Service</Text>
-       </Col>
+  state={
+    restauarntList:[]
+  }
 
-       <Col style={styles.gridStyle}>
-       <Image style={styles.image} source = {require('../../assets/vege.png')} />
-       <Text >Vegies</Text>
-       </Col>
+  fetchRestauarnts() {
 
-   
-     </Grid>
-  </ScrollView>
+      this.props.navigation.navigate("Restaurants");
+  }
+  
 
-<ScrollView>
-
-<Grid>
-     <Row >
-       <Image source = {{uri:'https://static.toiimg.com/photo/57888302.cms'}} style={{width: 400, height: 200}}/>
-       </Row>
-       <Row >
-       <Image source = {{uri:'https://static.toiimg.com/photo/imgsize-86204,msid-67785906/67785906.jpg'}} style={{width: 400, height: 200}}/>
-       </Row>
-       <Row>
-       <Image source = {{uri:'https://d168jcr2cillca.cloudfront.net/uploadimages/sales_offer_mainpic_20100909174909VilasVenue_Banner.png'}} style={{width: 400, height: 200}}/>
-       </Row>
-
-      </Grid>
+  render() {
+    return(
+      <Container>
+      <HeaderTab/>
+  
+      <Card transparent>
+              <CardItem>
+                <Body>
+  
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <MaterialCommunityIcons name="hand-pointing-left" color={'black'} size={25} />
+                <Text style={{fontSize:20, marginLeft:5}}>Swipe left to see Categories</Text>
+              </View>
+               
+                </Body>
+              </CardItem>
+            </Card>
     
+    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+   <Grid style={{marginBottom:40}}>
+         
+         <Col style={styles.gridStyle} onPress={this.fetchRestauarnts.bind(this)}>
+         <Image style={styles.image} source = {require('../../assets/restaurant.png')} />
+         <Text >Restaurants</Text>
+         </Col>
+  
+         <Col style={styles.gridStyle}>
+         <Image style={styles.image} source = {require('../../assets/grocery.png')} />
+         <Text >Grocery</Text>
+         </Col>
+  
+         <Col style={styles.gridStyle}>
+         <Image style={styles.image} source = {require('../../assets/milk.png')} />
+         <Text>Milk Service</Text>
+         </Col>
+  
+         <Col style={styles.gridStyle}>
+         <Image style={styles.image} source = {require('../../assets/vege.png')} />
+         <Text >Vegies</Text>
+         </Col>
+  
+     
+       </Grid>
+    </ScrollView>
+  
+  <ScrollView>
+  
+  <Grid>
+       <Row >
+         <Image source = {{uri:'https://static.toiimg.com/photo/57888302.cms'}} style={{width: 400, height: 200}}/>
+         </Row>
+         <Row >
+         <Image source = {{uri:'https://static.toiimg.com/photo/imgsize-86204,msid-67785906/67785906.jpg'}} style={{width: 400, height: 200}}/>
+         </Row>
+         <Row>
+         <Image source = {{uri:'https://d168jcr2cillca.cloudfront.net/uploadimages/sales_offer_mainpic_20100909174909VilasVenue_Banner.png'}} style={{width: 400, height: 200}}/>
+         </Row>
+  
+        </Grid>
+      
+  
+  </ScrollView>
+  
+         
+     
+     
+      </Container>
+     )
+  }
 
-</ScrollView>
-
-       
-   
-   
-    </Container>
-   )
+  
    
 }
 styles = StyleSheet.create({
